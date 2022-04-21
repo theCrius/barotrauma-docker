@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  barotrauma:
+    image: barotrauma
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 5
+    volumes:
+      - mods:/mods
+      - saves:/Multiplayer
+      - config:/config
+    ports:
+      - 27015:27015/udp
+      - 27016:27016/udp
+    build:
+      context: .
+      args:
+        STEAM_EPOC:
+
+volumes:
+  mods:
+  saves:
+  config:
+

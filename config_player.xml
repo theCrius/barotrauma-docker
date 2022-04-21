@@ -1,0 +1,34 @@
+<config
+  language="English"
+  verboselogging="false"
+  savedebugconsolelogs="false"
+  subeditorundobuffer="32"
+  maxautosaves="8"
+  autosaveintervalseconds="300"
+  subeditorbackground="#0D2545"
+  enablesplashscreen="true"
+  pauseonfocuslost="true"
+  aimassistamount="2.5"
+  enablemouselook="true"
+  chatopen="true"
+  crewmenuopen="true"
+  campaigndisclaimershown="true"
+  editordisclaimershown="true"
+  showoffensiveserverprompt="false"
+  tutorialskipwarning="false"
+  corpsedespawndelay="600"
+  corpsespersubdespawnthreshold="5"
+  usedualmodesockets="true"
+  disableingamehints="false"
+  enablesubmarineautosave="true"
+  quickstartsub="Humpback">
+  <contentpackages>
+    <!--Backwards compatibility-->
+    <core
+      name="Vanilla 0.9" />
+    <!--Vanilla-->
+    <corepackage
+      path="Content/ContentPackages/Vanilla.xml" />
+    <regularpackages />
+  </contentpackages>
+</config>
