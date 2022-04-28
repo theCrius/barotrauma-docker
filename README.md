@@ -29,6 +29,14 @@ Specifying the STEAM_EPOCH will build the image downloading the latest version a
 
 **Note:** *the UID of the user in the container defaults to `999`, pass `UID` as a build arg to change this*
 
+### Barotrauma Update
+
+Provided there isn't a breaking change, to update your server, simply run:
+
+```
+docker-compose up --force-recreate --build -d
+```
+
 ### Ports
 
 - Port `27015` *must* be opened for client connections
