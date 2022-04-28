@@ -21,11 +21,10 @@ An example sequence to build then run:
 
 ```bash
 docker-compose build --build-arg STEAM_EPOCH=$(date +%s)
-docker-compose up
+docker-compose up -d
 ```
 
-Add `-d` to the `docker-compose up` command to have it run in detached mode (background).
-Specifying the STEAM_EPOCH will build the image downloading the latest version available.
+Specifying the STEAM_EPOCH will build the image downloading the latest version available even if the image was built already previously.
 
 **Note:** *the UID of the user in the container defaults to `999`, pass `UID` as a build arg to change this*
 
@@ -54,7 +53,8 @@ The container uses three volumes:
 
 ## Mods
 
-The last version messed up how mods works, so this is supporting vanilla only. There is a script to install mods but it's not reliable right now.
+The last version messed up how mods works compared to how it was before and there are some bugs here and there, so for now, this is supporting vanilla only.  
+There is a script to install mods but it's not reliable right now.
 
 ## Licensing
 
