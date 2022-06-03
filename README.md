@@ -33,7 +33,7 @@ Specifying the STEAM_EPOCH will build the image downloading the latest version a
 Provided there isn't a breaking change, to update your server, simply run:
 
 ```
-docker-compose up --force-recreate --build -d
+docker-compose build --build-arg STEAM_EPOCH=$(date +%s) && docker-compose up -d
 ```
 
 ### Ports
