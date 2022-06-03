@@ -56,6 +56,15 @@ The container uses three volumes:
 The last version messed up how mods works compared to how it was before and there are some bugs here and there, so for now, this is supporting vanilla only.  
 There is a script to install mods but it's not reliable right now.
 
+---
+
+A minimal shell script is included to install mods with. The script can be invoked (inside the container) with:
+
+`install-mod <steam username> <space-delimited list of workshop IDs...>`  
+You will be prompted by steamcmd to log in, this is because the steam workshop requires someone who owns the game to be logged in to download anything
+The script will give you a list of lines to enter into your `/config/config_player.xml` file (make sure you get them inside the root tag)  
+Some mods may require special attention to paths inside their filelist.xml files
+
 ## Licensing
 
 The few files in this repository are licensed under the [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html).
