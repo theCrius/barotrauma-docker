@@ -55,11 +55,10 @@ RUN mkdir -p $CONFIG_LOC $CONF_BASE && \
     ln -s $CONFIG_LOC/permissionpresets.xml $INSTALL_LOC/Data/permissionpresets.xml && \
     ln -s $CONFIG_LOC/karmasettings.xml $INSTALL_LOC/Data/karmasettings.xml
 
-RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
-
 # Setup mods folder
-RUN mv "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed" $MODS_LOC && \
-    ln -s $MODS_LOC "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
+RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
+RUN mv "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed" $MODS_LOC
+RUN ln -s $MODS_LOC "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
 
 # Setup saves folder
 RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH" $SAVES_LOC && \
@@ -74,7 +73,6 @@ RUN chown -R barotrauma:barotrauma $CONFIG_LOC $INSTALL_LOC $MODS_LOC $SAVES_LOC
 # User and I/O
 USER barotrauma
 VOLUME $CONFIG_LOC $MODS_LOC $SAVES_LOC
-#VOLUME $CONFIG_LOC
 EXPOSE $GAME_PORT/udp $STEAM_PORT/udp
 
 # Exec

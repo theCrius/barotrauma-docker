@@ -1,8 +1,8 @@
 version: '3.9'
 
 services:
-  barotrauma:
-    image: barotrauma
+  barotrauma_modded:
+    image: barotrauma_modded
     deploy:
       restart_policy:
         condition: on-failure
