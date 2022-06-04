@@ -69,9 +69,9 @@ RUN mv "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Install
 RUN ln -s $MODS_LOC "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
 
 # Setup subs folder
-RUN mkdir -p "$INSTALL_LOC/Submarines"
-RUN mv "$INSTALL_LOC/Submarines" $SUBS_LOC
-RUN ln -s $SUBS_LOC "$INSTALL_LOC/Submarines"
+RUN mkdir -p "$INSTALL_LOC/LocalMods"
+RUN mv "$INSTALL_LOC/LocalMods" $SUBS_LOC
+RUN ln -s $SUBS_LOC "$INSTALL_LOC/LocalMods"
 
 # Setup saves folder
 RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH" $SAVES_LOC && \
