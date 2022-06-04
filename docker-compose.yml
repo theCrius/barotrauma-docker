@@ -9,6 +9,7 @@ services:
         max_attempts: 5
     volumes:
       - mods:/mods
+      - subs:/subs
       - saves:/Multiplayer
       - config:/config
     ports:
@@ -21,6 +22,7 @@ services:
 
 volumes:
   mods:
+  subs:
   saves:
   config:
 

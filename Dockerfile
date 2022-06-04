@@ -4,6 +4,7 @@ FROM steamcmd/steamcmd
 ENV INSTALL_LOC="/barotrauma"
 ENV CONFIG_LOC="/config"
 ENV MODS_LOC="/mods"
+ENV SUBS_LOC="/subs"
 ENV SAVES_LOC="/Multiplayer"
 ENV CONF_BASE="/config_readonly"
 
@@ -16,10 +17,11 @@ ARG GAME_PORT=27015
 ARG STEAM_PORT=27016
 ARG APPID=1026340
 ARG STEAM_EPOCH
+ARG LUA_SERVER
 
 # Update and install unicode symbols
 RUN apt-get update && \
-    apt-get install --no-install-recommends --assume-yes icu-devtools nano apt-utils
+    apt-get install --no-install-recommends --assume-yes icu-devtools nano apt-utils wget unzip
 
 # Create a dedicated user
 RUN useradd -rs /bin/false -d $INSTALL_LOC -u $UID barotrauma
@@ -30,6 +32,12 @@ RUN steamcmd \
     +force_install_dir /barotrauma \
     +app_update $APPID validate \
     +quit
+
+# Download and Install Lua for Barotrauma
+RUN if [[ -n "$LUA_SERVER" ]] ; then wget https://github.com/evilfactory/LuaCsForBarotrauma/releases/download/latest/barotrauma_lua_linux.zip ; fi
+RUN if [[ -n "$LUA_SERVER" ]] ; then unzip barotrauma_lua_linux.zip -d barotrauma-lua-linux ; fi
+RUN if [[ -n "$LUA_SERVER" ]] ; then cp -r barotrauma-lua-linux/* $INSTALL_LOC ; fi
+RUN if [[ -n "$LUA_SERVER" ]] ; then rm -rf barotrauma-lua-linux ; fi
 
 # Install scripts
 COPY docker-entrypoint.sh /docker-entrypoint.sh
@@ -59,6 +67,11 @@ RUN mkdir -p $CONFIG_LOC $CONF_BASE && \
 RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
 RUN mv "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed" $MODS_LOC
 RUN ln -s $MODS_LOC "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
+
+# Setup subs folder
+RUN mkdir -p "$INSTALL_LOC/Submarines"
+RUN mv "$INSTALL_LOC/Submarines" $SUBS_LOC
+RUN ln -s $SUBS_LOC "$INSTALL_LOC/Submarines"
 
 # Setup saves folder
 RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH" $SAVES_LOC && \

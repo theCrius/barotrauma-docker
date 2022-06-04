@@ -15,7 +15,7 @@ Tested with server version `0.17.12.0`.
 
 Built starting from `FragSoc/barotrauma-docker`, adding docker-compose support and changing directories' references to match the latest version of Barotrauma.
 
-## Usage
+## Run the Server
 
 An example sequence to build then run:
 
@@ -26,6 +26,16 @@ docker-compose up -d
 
 Specifying the STEAM_EPOCH will build the image downloading the latest version available even if the image was built already previously.
 
+If you are trying to run a modded server and need `Lua for Barotrauma`, specify the args `LUA_SERVER=true`.
+
+```bash
+docker-compose build --build-arg STEAM_EPOCH=$(date +%s) --build-arg LUA_SERVER=true
+docker-compose up -d
+```
+
+You will then need to add your mods (`docker volume ls` to see the volumes, `docker volume inspect <volume_name>` to see the path) in the mods volume and edit the `config_player.xml`file with the necessary references to the mods.
+Run `docker-compose down && docker-compose up -d` to have the server read the new configuration.
+
 **Note:** *the UID of the user in the container defaults to `999`, pass `UID` as a build arg to change this*
 
 ### Barotrauma Update
@@ -33,8 +43,10 @@ Specifying the STEAM_EPOCH will build the image downloading the latest version a
 Provided there isn't a breaking change, to update your server, simply run:
 
 ```
-docker-compose up --force-recreate --build -d
+docker-compose build --build-arg STEAM_EPOCH=$(date +%s) && docker-compose up -d
 ```
+
+Use the additional argument for modded servers in case you are running mods.
 
 ### Ports
 
