@@ -70,12 +70,27 @@ There is a script to install mods but it's not reliable right now.
 
 ---
 
-A minimal shell script is included to install mods with. The script can be invoked (inside the container) with:
+To install mods is better to subscribe on them from your steam account so that they are downloaded from the workshop.
+Then open the game and choose "Host Server" from within the main menu'. Once you are in the lobby. You can disconnect. In your game installation folder you should look for the file `config_player.xml`. That will contains the necessary configuration strings including your mods or custom submarines.
 
-`install-mod <steam username> <space-delimited list of workshop IDs...>`  
-You will be prompted by steamcmd to log in, this is because the steam workshop requires someone who owns the game to be logged in to download anything
-The script will give you a list of lines to enter into your `/config/config_player.xml` file (make sure you get them inside the root tag)  
-Some mods may require special attention to paths inside their filelist.xml files
+Upload them on your host machine and, once the container is running, move the mods' directories into the `mods` volume and the submarines's directories into the `subs` volume. Now edit the `config_player.xml` in the `config` volume to include the `regularpackages` sections that include your mods and submarines. You will need to edit the ones referring to the submarins so that they point to `LocalMods` and the ones that refer to mods to point to `Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed`.
+
+The result would be something like:
+
+```
+  [...]
+    <regularpackages>
+      <!--Lua For Barotrauma-->
+      <package
+        path="Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2559634234/filelist.xml" />
+      <!--K-28 Alligator-->
+      <package
+        path="LocalMods/2783571991/filelist.xml" />
+    </regularpackages>
+  [...]
+```
+
+Restart the container with `docker-compose down && docker-compose up -d` and you should be done.
 
 ## Licensing
 
