@@ -20,7 +20,7 @@ Built starting from `FragSoc/barotrauma-docker`, adding docker-compose support a
 An example sequence to build then run:
 
 ```bash
-docker-compose build --build-arg STEAM_EPOCH=$(date +%s)
+docker-compose build
 docker-compose up -d
 ```
 
@@ -29,7 +29,7 @@ Specifying the STEAM_EPOCH will build the image downloading the latest version a
 If you are trying to run a modded server and need `Lua for Barotrauma`, specify the args `LUA_SERVER=true`.
 
 ```bash
-docker-compose build --build-arg STEAM_EPOCH=$(date +%s) --build-arg LUA_SERVER=true
+docker-compose build --build-arg LUA_SERVER=true
 docker-compose up -d
 ```
 
@@ -46,7 +46,7 @@ Provided there isn't a breaking change, to update your server, simply run:
 docker-compose build --build-arg STEAM_EPOCH=$(date +%s) && docker-compose up -d
 ```
 
-Use the additional argument for modded servers in case you are running mods.
+Use the additional argument for modded servers (`--build-arg LUA_SERVER=true`) in case you are running mods.
 
 ### Ports
 
