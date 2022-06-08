@@ -65,15 +65,12 @@ The container uses three volumes:
 
 ## Mods
 
-The last version messed up how mods works compared to how it was before and there are some bugs here and there, so for now, this is supporting vanilla only.  
-There is a script to install mods but it's not reliable right now.
-
----
-
 To install mods is better to subscribe on them from your steam account so that they are downloaded from the workshop.
 Then open the game and choose "Host Server" from within the main menu'. Once you are in the lobby. You can disconnect. In your game installation folder you should look for the file `config_player.xml`. That will contains the necessary configuration strings including your mods or custom submarines.
 
-Upload them on your host machine and, once the container is running, move the mods' directories into the `mods` volume and the submarines's directories into the `subs` volume. Now edit the `config_player.xml` in the `config` volume to include the `regularpackages` sections that include your mods and submarines. You will need to edit the ones referring to the submarins so that they point to `LocalMods` and the ones that refer to mods to point to `Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed`.
+Upload them on your host machine and, once the container is running, move the mods' directories into the `mods` volume and the submarines's directories into the `subs` volume. After doing that be sure to give ownership of the directories/files added to the user with UID that started the container. Default should be `1000`.  
+Now edit the `config_player.xml` in the `config` volume to include the `regularpackages` sections that include your mods and submarines.  
+You will need to edit the ones referring to the submarins so that they point to `LocalMods` and the ones that refer to mods to point to `Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed`.
 
 The result would be something like:
 

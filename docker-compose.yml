@@ -3,6 +3,11 @@ version: '3.9'
 services:
   barotrauma:
     image: barotrauma
+    build:
+      context: .
+      args:
+        STEAM_EPOC:
+	UID: ${UID}
     deploy:
       restart_policy:
         condition: on-failure
@@ -15,10 +20,6 @@ services:
     ports:
       - 27015:27015/udp
       - 27016:27016/udp
-    build:
-      context: .
-      args:
-        STEAM_EPOC:
 
 volumes:
   mods:
