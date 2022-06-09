@@ -6,7 +6,6 @@ services:
     build:
       context: .
       args:
-        STEAM_EPOC:
         UID: ${UID}
         GID: ${GID}
     deploy:
