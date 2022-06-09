@@ -29,7 +29,7 @@ docker-compose up -d
 
 You will then need to add your mods in the mods volume (default `$HOME/barotrauma-server/`) and edit the `config_player.xml`file with the necessary references to the mods. Run `docker-compose down && docker-compose up -d` to have the server read the new configuration. More details below.
 
-### Barotrauma Update
+## Barotrauma Update
 
 Provided there isn't a breaking change from the developers, to update your server, run:
 
@@ -41,12 +41,12 @@ docker-compose build --no-cache
 Use the additional argument for modded servers (`--build-arg LUA_SERVER=true`) in case you are running mods.  
 Then, finally: `docker-compose up -d` to restart the container.
 
-### Ports
+## Ports
 
 - Port `27015` *must* be opened for client connections
 - Port `27016` can optionally be opened for steam communication
 
-### Volumes
+## Volumes
 
 The container uses three volumes:
 
