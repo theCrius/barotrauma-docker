@@ -87,9 +87,9 @@ The result would be something like:
       <!--Lua For Barotrauma-->
       <package
         path="Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2559634234/filelist.xml" />
-      <!--K-28 Alligator-->
+      <!--A Custom Submarine-->
       <package
-        path="LocalMods/2783571991/filelist.xml" />
+        path="LocalMods/123456789/filelist.xml" />
     </regularpackages>
   [...]
 ```
