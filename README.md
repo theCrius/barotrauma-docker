@@ -1,19 +1,9 @@
-<center>
-    <a href=https://barotraumagame.com/>
-        <img width=100% src="https://ehpodcasts.files.wordpress.com/2019/06/barotrauma-logo.jpg"/>
-    </a>
-    <br/>
-    <img alt="Travis (.com)" src="https://img.shields.io/travis/com/FragSoc/barotrauma-docker?style=flat-square">
-    <img alt="GitHub" src="https://img.shields.io/github/license/FragSoc/barotrauma-docker?style=flat-square">
-</center>
+# Barotrauma Docker
 
+A [Docker](https://www.docker.com/) image for running a dedicated server for the game [Barotrauma](https://barotraumagame.com/).  
+Tested with server version `0.17.15.0`.
 
 ---
-
-A [docker](https://www.docker.com/) image for running a dedicated server for the game [Barotrauma](https://barotraumagame.com/).
-Tested with server version `0.17.12.0`.
-
-Built starting from `FragSoc/barotrauma-docker`, adding docker-compose support and changing directories' references to match the latest version of Barotrauma.
 
 ## Run the Server
 
@@ -97,9 +87,13 @@ The result would be something like:
 
 Restart the container with `docker-compose down && docker-compose up -d` and you should be done.
 
+## Credits
+
+Built starting from `FragSoc/barotrauma-docker` image, then adding docker-compose support and changing directories' references to match the latest version of Barotrauma, at this point overhauling the entire thing. Credits left to thanks for the initial image that helped understanding how this game server was supposed to be set up prior to the "mods apocalypse".
+
 ## Licensing
 
-The few files in this repository are licensed under the [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html).
+<img alt="GitHub" src="https://img.shields.io/github/license/FragSoc/barotrauma-docker?style=flat-square"> The few files in this repository are licensed under the [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 However, Barotrauma itself is licensed by [Undertow Games](https://undertowgames.com/) and [Fakefish](http://fakefishgames.com/#home), no credit is taken for the software running in this container.
 Read [their EULA](https://github.com/Regalis11/Barotrauma/blob/master/EULA.txt) for more information.
