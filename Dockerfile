@@ -2,11 +2,11 @@ FROM steamcmd/steamcmd
 
 # Directories
 ENV INSTALL_LOC="/barotrauma"
-ENV CONFIG_LOC="/config"
-ENV MODS_LOC="/mods"
-ENV SUBS_LOC="/subs"
-ENV SAVES_LOC="/Multiplayer"
 ENV CONF_BASE="/config_readonly"
+ENV CONFIG_LOC="/barotrauma/volumes/config"
+ENV MODS_LOC="/barotrauma/volumes/mods"
+ENV SUBS_LOC="/barotrauma/volumes/subs"
+ENV SAVES_LOC="/barotrauma/volumes/Multiplayer"
 
 # Required since useradd does not appear to set $HOME
 ENV HOME=$INSTALL_LOC

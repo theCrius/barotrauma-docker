@@ -14,10 +14,10 @@ services:
         condition: on-failure
         max_attempts: 5
     volumes:
-      - mods:/mods
-      - subs:/subs
-      - saves:/Multiplayer
-      - config:/config
+      - $HOME/barotrauma-server/mods:/barotrauma/volumes/mods
+      - $HOME/barotrauma-server/subs:/barotrauma/volumes/subs
+      - $HOME/barotrauma-server/saves:/barotrauma/volumes/Multiplayer
+      - $HOME/barotrauma-server/config:/barotrauma/volumes/config
     ports:
       - 27015:27015/udp
       - 27016:27016/udp

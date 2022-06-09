@@ -63,12 +63,10 @@ Use the additional argument for modded servers (`--build-arg LUA_SERVER=true`) i
 
 The container uses three volumes:
 
-- Server configuration files at `/config`
-- Mods files at `/mods`
-- Subs files at `/subs`
-- Saves at `/saves`
-
-**Note:** *if you use a [bind mount](https://docs.docker.com/storage/bind-mounts/), the host path you mount into the container *must* be owned by the UID you passed to the build (default `999`)*
+- Server configuration files at `/barotrauma/volumes/config`
+- Mods files at `/barotrauma/volumes/mods`
+- Subs files at `/barotrauma/volumes/subs`
+- Saves at `/barotrauma/volumes/saves`
 
 ## Mods
 
