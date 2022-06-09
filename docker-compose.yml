@@ -7,7 +7,8 @@ services:
       context: .
       args:
         STEAM_EPOC:
-	UID: ${UID}
+        UID: ${UID}
+        GID: ${GID}
     deploy:
       restart_policy:
         condition: on-failure

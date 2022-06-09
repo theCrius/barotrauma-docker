@@ -20,6 +20,8 @@ Built starting from `FragSoc/barotrauma-docker`, adding docker-compose support a
 An example sequence to build then run:
 
 ```bash
+export UID=$(id -u)
+export GID=$(id -g)
 docker-compose build
 docker-compose up -d
 ```
@@ -29,6 +31,8 @@ Specifying the STEAM_EPOCH will build the image downloading the latest version a
 If you are trying to run a modded server and need `Lua for Barotrauma`, specify the args `LUA_SERVER=true`.
 
 ```bash
+export UID=$(id -u)
+export GID=$(id -g)
 docker-compose build --build-arg LUA_SERVER=true
 docker-compose up -d
 ```
@@ -43,6 +47,8 @@ Run `docker-compose down && docker-compose up -d` to have the server read the ne
 Provided there isn't a breaking change, to update your server, simply run:
 
 ```
+export UID=$(id -u)
+export GID=$(id -g)
 docker-compose build --build-arg STEAM_EPOCH=$(date +%s) && docker-compose up -d
 ```
 
@@ -59,6 +65,7 @@ The container uses three volumes:
 
 - Server configuration files at `/config`
 - Mods files at `/mods`
+- Subs files at `/subs`
 - Saves at `/saves`
 
 **Note:** *if you use a [bind mount](https://docs.docker.com/storage/bind-mounts/), the host path you mount into the container *must* be owned by the UID you passed to the build (default `999`)*

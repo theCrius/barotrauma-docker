@@ -13,6 +13,7 @@ ENV HOME=$INSTALL_LOC
 
 # Build args
 ARG UID=1000
+ARG GID=1000
 ARG GAME_PORT=27015
 ARG STEAM_PORT=27016
 ARG APPID=1026340
@@ -24,7 +25,8 @@ RUN apt-get update && \
     apt-get install --no-install-recommends --assume-yes icu-devtools nano apt-utils wget unzip
 
 # Create a dedicated user
-RUN useradd -rs /bin/false -d $INSTALL_LOC -u $UID barotrauma
+RUN groupadd -g $GID barotrauma && \
+    useradd -m -s /bin/false -u $UID -g $GID -d $INSTALL_LOC barotrauma
 
 # Install the barotrauma server
 RUN steamcmd \
@@ -41,7 +43,6 @@ RUN if [[ -n "$LUA_SERVER" ]] ; then rm -rf barotrauma-lua-linux ; fi
 
 # Install scripts
 COPY docker-entrypoint.sh /docker-entrypoint.sh
-COPY install-mod.sh /usr/bin/install-mod
 
 # Copy config_player.xml
 COPY config_player.xml $CONFIG_LOC/config_player.xml
