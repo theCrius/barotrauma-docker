@@ -1,7 +1,7 @@
 # Barotrauma Docker
 
 A [Docker](https://www.docker.com/) image for running a dedicated server for the game [Barotrauma](https://barotraumagame.com/).  
-Tested with server version `0.17.15.0`.
+Tested with server version `0.18.11.0`.
 
 ---
 
