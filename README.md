@@ -27,7 +27,7 @@ docker-compose build --build-arg LUA_SERVER=true
 docker-compose up -d
 ```
 
-You will then need to add your mods in the mods volume (default `$HOME/barotrauma-server/`) and edit the `config_player.xml`file with the necessary references to the mods. Run `docker-compose down && docker-compose up -d` to have the server read the new configuration. More details below.
+You will then need to add your mods in the mods volume (default `$HOME/barotrauma-server/mods`) and edit the `config_player.xml`file with the necessary references to the mods. Run `docker-compose down && docker-compose up -d` to have the server read the new configuration. More details below.
 
 ## Barotrauma Update
 
