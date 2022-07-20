@@ -68,7 +68,7 @@ That will contains the necessary configuration strings including your mods or cu
 Upload mods, subs and `config_player.xml` on your host machine and, once the container is running, copy/move the mods' directories into the `mods` volume and the submarines's directories into the `subs` volume.
 
 Now edit the `config_player.xml` in the `configs` volume to include the `regularpackages` sections that include your mods and submarines.  
-You will need to edit the ones referring to the submarins so that they point to `LocalMods` and the ones that refer to mods to point to `Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed`.
+You will need to edit the ones referring to the submarins so that they point to `LocalMods` and the ones that refer to mods to point to `/barotrauma/volumes/mods/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed`.
 
 The result would be something like:
 
@@ -77,10 +77,10 @@ The result would be something like:
     <regularpackages>
       <!--A Downloaded Mod-->
       <package
-        path="Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/987654321/filelist.xml" />
+        path="/barotrauma/volumes/mods/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/987654321/filelist.xml" />
       <!--A Custom Submarine-->
       <package
-        path="LocalMods/123456789/filelist.xml" />
+        path="/barotrauma/volumes/mods/LocalMods/123456789/filelist.xml" />
     </regularpackages>
   [...]
 ```
