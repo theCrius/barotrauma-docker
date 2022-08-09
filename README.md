@@ -1,7 +1,12 @@
 # Barotrauma Docker
 
-A [Docker](https://www.docker.com/) image for running a dedicated server for the game [Barotrauma](https://barotraumagame.com/).  
+A Docker image for running a dedicated server for the game [Barotrauma](https://barotraumagame.com/).  
 Tested with server version `0.18.15.0`.
+
+## Requirements
+
+- docker v20.10.16 [how to install - step 1 & 2](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
+- docker-compose (recommended) v1.29.2 [how to install](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04)
 
 ---
 
