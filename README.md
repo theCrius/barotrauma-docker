@@ -1,7 +1,7 @@
 # Barotrauma Docker
 
 A Docker image for running a dedicated server for the game [Barotrauma](https://barotraumagame.com/).  
-Tested with server version `0.18.15.0`.
+Tested with server version `0.19.11.0`.
 
 ## Requirements
 
@@ -80,12 +80,10 @@ The result would be something like:
 ```
   [...]
     <regularpackages>
-      <!--A Downloaded Mod-->
+      <!--Start Downloaded Mod-->
       <package
         path="Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/987654321/filelist.xml" />
-      <!--A Custom Submarine-->
-      <package
-        path="LocalMods/123456789/filelist.xml" />
+      <!--End Downloaded Mod-->
     </regularpackages>
   [...]
 ```
