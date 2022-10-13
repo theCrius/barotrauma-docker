@@ -35,8 +35,8 @@ RUN steamcmd \
     +quit
 
 # Download and Install Lua for Barotrauma
-RUN if [[ -n "$LUA_SERVER" ]] ; then wget https://github.com/evilfactory/LuaCsForBarotrauma/releases/download/latest/barotrauma_lua_linux.zip ; fi
-RUN if [[ -n "$LUA_SERVER" ]] ; then unzip barotrauma_lua_linux.zip -d barotrauma-lua-linux ; fi
+RUN if [[ -n "$LUA_SERVER" ]] ; then wget https://github.com/evilfactory/LuaCsForBarotrauma/releases/download/latest/luacsforbarotrauma_build_linux.zip ; fi
+RUN if [[ -n "$LUA_SERVER" ]] ; then unzip luacsforbarotrauma_build_linux.zip -d barotrauma-lua-linux ; fi
 RUN if [[ -n "$LUA_SERVER" ]] ; then cp -r barotrauma-lua-linux/* $INSTALL_LOC ; fi
 RUN if [[ -n "$LUA_SERVER" ]] ; then rm -rf barotrauma-lua-linux ; fi
 
