@@ -21,8 +21,6 @@ docker-compose build
 docker-compose up -d
 ```
 
-Specifying the STEAM_EPOCH will build the image downloading the latest version available even if the image was built already previously.
-
 If you are trying to run a modded server and need `Lua for Barotrauma`, specify the args `LUA_SERVER=true`.
 
 ```bash
@@ -56,8 +54,8 @@ Then, finally: `docker-compose up -d` to restart the container.
 The container uses three volumes:
 
 - Configs files at `$HOME/barotrauma-server/configs`, mounted as `/barotrauma/volumes/config` in the container
-- Mods files at `$HOME/barotrauma-server/mods`, mounted as `/barotrauma/volumes/mods` in the container
-- Subs files at `$HOME/barotrauma-server/subs`, mounted as `/barotrauma/volumes/subs` in the container
+- Workshop Mod files at `$HOME/barotrauma-server/workshop-mods`, mounted as `/barotrauma/volumes/workshopMods` in the container
+- Local Mod files at `$HOME/barotrauma-server/local-mods`, mounted as `/barotrauma/volumes/localMods` in the container
 - Saves files at `$HOME/barotrauma-server/saves`, mounted as `/barotrauma/volumes/saves` in the container
 
 The various directories/files are then linked with the correct file/directories where the game server expect them to be.

@@ -2,6 +2,7 @@ version: '3.9'
 
 services:
   barotrauma:
+    user: "${UID}:${GID}"
     image: barotrauma
     build:
       context: .
@@ -13,8 +14,8 @@ services:
         condition: on-failure
         max_attempts: 5
     volumes:
-      - $HOME/barotrauma-server/mods:/barotrauma/volumes/mods
-      - $HOME/barotrauma-server/subs:/barotrauma/volumes/subs
+      - $HOME/barotrauma-server/workshop-mods:/barotrauma/volumes/workshopMods
+      - $HOME/barotrauma-server/local-mods:/barotrauma/volumes/localMods
       - $HOME/barotrauma-server/saves:/barotrauma/volumes/Multiplayer
       - $HOME/barotrauma-server/config:/barotrauma/volumes/config
     ports:
@@ -22,8 +23,7 @@ services:
       - 27016:27016/udp
 
 volumes:
-  mods:
-  subs:
+  workshop-mods:
+  local-mods:
   saves:
   config:
-

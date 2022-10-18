@@ -4,16 +4,16 @@ FROM steamcmd/steamcmd
 ENV INSTALL_LOC="/barotrauma"
 ENV CONF_BASE="/config_readonly"
 ENV CONFIG_LOC="/barotrauma/volumes/config"
-ENV MODS_LOC="/barotrauma/volumes/mods"
-ENV SUBS_LOC="/barotrauma/volumes/subs"
+ENV WORKSHOP_MODS_LOC="/barotrauma/volumes/workshopMods"
+ENV LOCAL_MODS_LOC="/barotrauma/volumes/localMods"
 ENV SAVES_LOC="/barotrauma/volumes/Multiplayer"
 
 # Required since useradd does not appear to set $HOME
 ENV HOME=$INSTALL_LOC
 
 # Build args
-ARG UID=1000
-ARG GID=1000
+ARG UID
+ARG GID
 ARG GAME_PORT=27015
 ARG STEAM_PORT=27016
 ARG APPID=1026340
@@ -65,13 +65,13 @@ RUN mkdir -p $CONFIG_LOC $CONF_BASE && \
 
 # Setup mods folder
 RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
-RUN mv "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed" $MODS_LOC
-RUN ln -s $MODS_LOC "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
+RUN mv "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed" $WORKSHOP_MODS_LOC
+RUN ln -s $WORKSHOP_MODS_LOC "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
 
 # Setup subs folder
 RUN mkdir -p "$INSTALL_LOC/LocalMods"
-RUN mv "$INSTALL_LOC/LocalMods" $SUBS_LOC
-RUN ln -s $SUBS_LOC "$INSTALL_LOC/LocalMods"
+RUN mv "$INSTALL_LOC/LocalMods" $LOCAL_MODS_LOC
+RUN ln -s $LOCAL_MODS_LOC "$INSTALL_LOC/LocalMods"
 
 # Setup saves folder
 RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH" $SAVES_LOC && \
@@ -81,11 +81,11 @@ RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH" $SAVES_LOC && \
 RUN mkdir -p "$INSTALL_LOC/ServerLogs"
 
 # Set directory permissions
-RUN chown -R barotrauma:barotrauma $CONFIG_LOC $INSTALL_LOC $MODS_LOC $SAVES_LOC
+RUN chown -R barotrauma:barotrauma $CONFIG_LOC $INSTALL_LOC $WORKSHOP_MODS_LOC $SAVES_LOC
 
 # User and I/O
 USER barotrauma
-VOLUME $CONFIG_LOC $MODS_LOC $SAVES_LOC
+VOLUME $CONFIG_LOC $WORKSHOP_MODS_LOC $SAVES_LOC
 EXPOSE $GAME_PORT/udp $STEAM_PORT/udp
 
 # Exec
