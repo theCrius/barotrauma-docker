@@ -50,18 +50,19 @@ COPY config_player.xml $CONFIG_LOC/config_player.xml
 RUN ln -s $INSTALL_LOC/linux64/steamclient.so /usr/lib/steamclient.so
 
 # Sort configs and directories
-RUN mkdir -p $CONFIG_LOC $CONF_BASE && \
-    mv \
-        $INSTALL_LOC/serversettings.xml \
-        $INSTALL_LOC/Data/clientpermissions.xml \
-        $INSTALL_LOC/Data/permissionpresets.xml \
-        $INSTALL_LOC/Data/karmasettings.xml \
-        $CONF_BASE && \
-    ln -s $CONFIG_LOC/serversettings.xml $INSTALL_LOC/serversettings.xml && \
-    ln -s $CONFIG_LOC/config_player.xml $INSTALL_LOC/config_player.xml && \
-    ln -s $CONFIG_LOC/clientpermissions.xml $INSTALL_LOC/Data/clientpermissions.xml && \
-    ln -s $CONFIG_LOC/permissionpresets.xml $INSTALL_LOC/Data/permissionpresets.xml && \
-    ln -s $CONFIG_LOC/karmasettings.xml $INSTALL_LOC/Data/karmasettings.xml
+RUN mkdir -p $CONFIG_LOC $CONF_BASE
+
+# Copy serversettings.xml from repo as recently introduced bug
+COPY serversettings.xml $INSTALL_LOC/serversettings-patch.xml
+RUN [ ! -f "$INSTALL_LOC/serversettings.xml" ] && mv $INSTALL_LOC/serversettings-patch.xml $INSTALL_LOC/serversettings.xml
+
+RUN mv $INSTALL_LOC/serversettings.xml $INSTALL_LOC/Data/clientpermissions.xml $INSTALL_LOC/Data/permissionpresets.xml $INSTALL_LOC/Data/karmasettings.xml $CONF_BASE
+
+RUN ln -s $CONFIG_LOC/serversettings.xml $INSTALL_LOC/serversettings.xml && \
+  ln -s $CONFIG_LOC/config_player.xml $INSTALL_LOC/config_player.xml && \
+  ln -s $CONFIG_LOC/clientpermissions.xml $INSTALL_LOC/Data/clientpermissions.xml && \
+  ln -s $CONFIG_LOC/permissionpresets.xml $INSTALL_LOC/Data/permissionpresets.xml && \
+  ln -s $CONFIG_LOC/karmasettings.xml $INSTALL_LOC/Data/karmasettings.xml
 
 # Setup mods folder
 RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
